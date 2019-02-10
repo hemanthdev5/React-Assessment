@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Textinput from './Textinput/Textinput';
+import Dropdown from './Dropdown/Dropdown';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+class App extends React.Component {
+  constructor(){
+     super();
+     this.state = { value: null}
+     this.change = this.change.bind(this)
   }
+  
+  change(value){
+     this.setState({value})
+  }
+  
+  render(){
+     return(
+        <div>
+           <Textinput value={this.state.value}/>
+           <Dropdown value={this.state.value} change={this.change}/>
+        </div>
+     )
+  }      
 }
 
 export default App;
